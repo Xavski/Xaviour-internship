@@ -35,5 +35,3 @@ const CountdownTimer = ({ expiryDate }) => {
 };
 
 export default CountdownTimer;
-
-//maybe try using a prop instead
