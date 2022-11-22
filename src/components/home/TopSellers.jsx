@@ -1,8 +1,25 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
+
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const TopSellers = () => {
+  const [loading, setLoading] = useState(true)
+  const [topSellers, setTopSellers] = useState([])
+
+  
+  useEffect(()=>{
+    async function fetchTopSellers(){
+      const { data } = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers')
+      setTopSellers(data)
+      setLoading(false)
+    }
+    fetchTopSellers()
+  },[])
+
+
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
@@ -15,21 +32,34 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {new Array(12).fill(0).map((_, index) => (
-                <li key={index}>
+              {loading? new Array(12).fill(0).map((_, index)=>
+                <li key = {index}>
                   <div className="author_list_pp">
-                    <Link to="/author">
+                      <Skeleton circle= {40} height = {50}/>
+                      <i className="fa fa-check"></i>
+                  </div>
+                  <div className="author_list_info">
+                    <Skeleton width={100}/>
+                    <Skeleton width={50}/>
+                  </div>
+                </li>
+              )
+               : 
+               topSellers.map((seller) => (
+                <li key={seller.authorId}>
+                  <div className="author_list_pp">
+                    <Link to='/author'>
                       <img
                         className="lazy pp-author"
-                        src={AuthorImage}
+                        src={seller.authorImage}
                         alt=""
                       />
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">Monica Lucas</Link>
-                    <span>2.1 ETH</span>
+                    <Link to="/author">{seller.authorName}</Link>
+                    <span>{seller.price} ETH</span>
                   </div>
                 </li>
               ))}
