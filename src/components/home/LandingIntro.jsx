@@ -1,29 +1,37 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const LandingIntro = () => {
+  useEffect(() => {
+    AOS.init({
+      easing: "ease-out-back",
+      duration: 100,
+      once: true
+    });
+  }, []);
   return (
     <section id="section-intro" className="no-top no-bottom">
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-sm-30">
             <div className="feature-box f-boxed style-3">
-              <i className="bg-color-2 i-boxed icon_wallet"></i>
+              <i className="bg-color-2 i-boxed icon_wallet" data-aos="fade-up" data-aos-duration="300" data-aos-easing="linear"></i>
               <div className="text">
-                <h4 className="">Set up your wallet</h4>
-                <p>
+                <h4 className="" data-aos="fade-up" data-aos-duration="400" data-aos-easing="linear">Set up your wallet</h4>
+                <p data-aos="fade-up" data-aos-duration="700" data-aos-easing="linear">
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem.
                 </p>
               </div>
-              <i className="wm icon_wallet"></i>
+              <i className="wm icon_wallet" ></i>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 mb-sm-30">
             <div className="feature-box f-boxed style-3">
-              <i className="bg-color-2 i-boxed icon_cloud-upload_alt"></i>
+              <i className="bg-color-2 i-boxed icon_cloud-upload_alt" data-aos="fade-up" data-aos-duration="300" data-aos-easing="linear"></i>
               <div className="text">
-                <h4 className="">Add your NFT's</h4>
-                <p>
+                <h4 className="" data-aos="fade-up" data-aos-duration="400" data-aos-easing="linear">Add your NFT's</h4>
+                <p data-aos="fade-up" data-aos-duration="700" data-aos-easing="linear">
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem.
                 </p>
@@ -33,10 +41,10 @@ const LandingIntro = () => {
           </div>
           <div className="col-lg-4 col-md-6 mb-sm-30">
             <div className="feature-box f-boxed style-3">
-              <i className="bg-color-2 i-boxed icon_tags_alt"></i>
+              <i className="bg-color-2 i-boxed icon_tags_alt"  data-aos="fade-up" data-aos-duration="300" data-aos-easing="linear"></i>
               <div className="text">
-                <h4 className="">Sell your NFT's</h4>
-                <p>
+                <h4 className="" data-aos="fade-up" data-aos-duration="400" data-aos-easing="linear">Sell your NFT's</h4>
+                <p data-aos="fade-up" data-aos-duration="700" data-aos-easing="linear">
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem.
                 </p>
