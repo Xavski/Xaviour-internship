@@ -5,14 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const TopSellers = () => {
   const [loading, setLoading] = useState(true);
   const [topSellers, setTopSellers] = useState([]);
-  const navigate = useNavigate();
-
-  function authorId(id) {
-    navigate(`/author/${id}`);
-  }
 
   useEffect(() => {
     async function fetchTopSellers() {
@@ -21,6 +19,10 @@ const TopSellers = () => {
       );
       setTopSellers(data);
       setLoading(false);
+
+      AOS.init({
+        easing: false,
+        once: true})
     }
     fetchTopSellers();
   }, []);
@@ -31,7 +33,7 @@ const TopSellers = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Top Sellers</h2>
+              <h2 data-aos="zoom-in" data-aos-duration="500">Top Sellers</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>

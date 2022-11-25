@@ -9,6 +9,9 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const HotCollections = () => {
   const [hotCollections, setHotCollections] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,6 +23,11 @@ const HotCollections = () => {
       );
       setHotCollections(data);
       setLoading(false);
+
+      AOS.init({
+        easing: false,
+        once: true})
+      
     }
     fetchHotCollections();
   }, []);
@@ -52,7 +60,7 @@ const HotCollections = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Hot Collections</h2>
+              <h2 data-aos="zoom-in" data-aos-duration="500">Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>

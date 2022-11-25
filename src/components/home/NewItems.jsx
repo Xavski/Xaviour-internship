@@ -10,6 +10,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import CountdownTimer from "../UI/CountdownTimer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 
@@ -31,6 +33,10 @@ const NewItems = () => {
       );
       setNewItems(data);
       setLoading(false);
+
+      AOS.init({
+        easing:false,
+        once: true})
     }
     fetchNewItems();
   }, []);
@@ -63,7 +69,7 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>New Items</h2>
+              <h2 data-aos="zoom-in" data-aos-duration="500">New Items</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
